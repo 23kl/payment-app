@@ -7,7 +7,7 @@ const router=express.Router()
 
 router.get('/balance',authMiddleware,async (req,res)=>{ // for showing balance on frontend
   const account=await Account.findOne({
-    userId:req.userId
+    userId:req.userId // accessing the user id through middleware 
   })
 
 if(!account){
@@ -34,7 +34,7 @@ router.post("/transfer",authMiddleware,async (req,res)=>{ // body{ Balance,to}
     if(!account || account.balance<amount){
        await session.abortTransaction();
         return res.status(400).json({
-            msg:"Insufficient Balance"
+            msg:"Insufficient Balance or account doesn't exist "
         })
     }
 
@@ -55,7 +55,7 @@ router.post("/transfer",authMiddleware,async (req,res)=>{ // body{ Balance,to}
         msg:"Money Transfered"
     })
 
-})
+})g
 
 
 module.exports=router
