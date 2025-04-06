@@ -5,7 +5,6 @@ const {User}=require("../db");
 const {Account}=require("../db");
 const jwt=require("jsonwebtoken");
 const {JWT_SECRET}=require("../config") // previously you were importing the object now you are importing string
-console.log("JWT Secret Key:", JWT_SECRET); // Debugging
 const {authMiddleware}=require("../middleware");
 // Atomicity should be handled carefully in this project while transferring funds
 
